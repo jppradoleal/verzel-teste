@@ -1,7 +1,7 @@
 import {Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn} from "typeorm";
 import {v4 as uuid} from "uuid";
 
-@Entity()
+@Entity({name: "modules"})
 class Module {
   @PrimaryColumn()
   readonly id: string;

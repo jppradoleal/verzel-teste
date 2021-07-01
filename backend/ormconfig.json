@@ -1,20 +1,15 @@
 {
    "type": "sqlite",
    "database": "src/database/verzel.sqlite",
-   "synchronize": true,
-   "logging": false,
+   "logging": true,
    "entities": [
       "src/entity/**/*.ts"
    ],
    "migrations": [
       "src/database/migration/**/*.ts"
    ],
-   "subscribers": [
-      "src/subscriber/**/*.ts"
-   ],
    "cli": {
       "entitiesDir": "src/entity",
-      "migrationsDir": "src/database/migration",
-      "subscribersDir": "src/subscriber"
+      "migrationsDir": "src/database/migration"
    }
 }

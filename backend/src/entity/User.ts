@@ -2,7 +2,7 @@ import { Exclude } from "class-transformer";
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm";
 import {v4 as uuid} from "uuid";
 
-@Entity()
+@Entity({name: "users"})
 class User {
 
     @PrimaryGeneratedColumn()

@@ -2,7 +2,7 @@ import {Module} from "./Module";
 import {Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn} from "typeorm";
 import {v4 as uuid} from "uuid";
 
-@Entity()
+@Entity({name: "classes"})
 class Class {
   @PrimaryColumn()
   readonly id: string;
