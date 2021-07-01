@@ -2,11 +2,13 @@ import "reflect-metadata";
 import cors from "cors";
 import express, {Request, Response, NextFunction } from "express"; 
 import "express-async-errors";
-
+import { config } from "dotenv";
 import "./database";
 
 import { router } from "./routes";
 import { HttpException } from "./exceptions/HttpException";
+
+config();
 
 const app = express();
 app.use(cors());

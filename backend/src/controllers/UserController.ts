@@ -25,6 +25,19 @@ class UserController {
 
     response.status(200).json(users);
   }
+
+  async authenticate(request: Request, response: Response) {
+    const {email, password} = request.body;
+
+    const userService = new UserService();
+
+    const token = await userService.authenticate({
+      email,
+      password,
+    });
+
+    return response.status(200).json(token);
+  }
 }
 
 export {UserController}

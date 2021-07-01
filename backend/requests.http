@@ -4,10 +4,20 @@ GET http://localhost:8080/users HTTP/1.1
 
 POST http://localhost:8080/users/create HTTP/1.1
 content-type: application/json
+Authorization: "Bearer eyhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9wZWRyb0Bob3RtYWlsLmNvbSIsImlhdCI6MTYyNTExMTU5MCwiZXhwIjoxNjI1MTk3OTkwLCJzdWIiOiIxNjYxYjM1MC03OGQ4LTQyYWMtYmUxMC1lYzM0NDAwMTgyOTIifQ.cv5lmLoi-UAQOXU6BUldQAICdXaMZXa3ph4QVYjGy7E
+
+{
+  "email": "joaopedro0128@hotmail.com",
+  "name": "João",
+  "admin": true,
+  "password": "123abc"
+}
+
+###
+POST http://localhost:8080/login HTTP/1.1
+content-type: application/json
 
 {
   "email": "joaopedro@hotmail.com",
-  "name": "João",
-  "admin": true,
   "password": "123abc"
 }
