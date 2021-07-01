@@ -1,0 +1,37 @@
+{
+   "name": "backend",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "start": "ts-node-dev src/server.ts",
+      "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+      "migrate": "npm run typeorm -- migration:run"
+   },
+   "author": "JPPradoLeal",
+   "license": "ISC",
+   "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "class-transformer": "^0.4.0",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "express-async-errors": "^3.1.1",
+      "jsonwebtoken": "^8.5.1",
+      "mysql": "^2.14.1",
+      "reflect-metadata": "^0.1.10",
+      "sqlite3": "^5.0.2",
+      "typeorm": "0.2.34",
+      "uuid": "^3.4.0"
+   },
+   "devDependencies": {
+      "@types/bcryptjs": "^2.4.2",
+      "@types/cors": "^2.8.10",
+      "@types/express": "^4.17.12",
+      "@types/jsonwebtoken": "^8.5.2",
+      "@types/node": "^8.0.29",
+      "@types/uuid": "^8.3.0",
+      "ts-node": "^3.3.0",
+      "ts-node-dev": "^1.1.7",
+      "typescript": "^3.3.3333"
+   }
+}
