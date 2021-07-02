@@ -1,5 +1,5 @@
 import {Module} from "./Module";
-import {Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn, UpdateDateColumn} from "typeorm";
 import {v4 as uuid} from "uuid";
 
 @Entity({name: "classes"})
@@ -10,7 +10,7 @@ class Class {
   @Column()
   name: string;
 
-  @OneToMany(type => Module, module => module.id)
+  @ManyToOne(() => Module, module => module.id)
   module: Module;
 
   @Column()

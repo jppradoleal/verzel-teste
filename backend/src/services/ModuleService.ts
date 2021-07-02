@@ -31,10 +31,26 @@ class ModuleService {
     return classToPlain(modules);
   }
 
+  async getOne(id: string) {
+    const moduleRepository = getCustomRepository(ModuleRepository);
+
+    const module = await moduleRepository.findOne({id});
+
+    if(!module) {
+      throw new InvalidRequestException("Module not found");
+    }
+
+    return classToPlain(module);
+  }
+
   async update(id: string, name: string) {
     const moduleRepository = getCustomRepository(ModuleRepository);
 
     let module = await moduleRepository.findOne({id});
+
+    if(!module) {
+      throw new InvalidRequestException("Module not found");
+    }
 
     module.name = name;
 
@@ -42,15 +58,21 @@ class ModuleService {
 
     await moduleRepository.update({id}, module);
 
-    return module;
+    return classToPlain(module);
   }
 
   async delete(id: string) {
     const moduleRepository = getCustomRepository(ModuleRepository);
 
-    const result = await moduleRepository.delete({id});
+    const module = await moduleRepository.findOne({id});
 
-    return result.affected > 0;
+    if(!module) {
+      throw new InvalidRequestException("Module not found");
+    }
+
+    const result = await moduleRepository.delete(id);
+
+    return true;
   }
 }
 

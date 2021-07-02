@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { InvalidRequestException } from "../exceptions/InvalidRequestException";
 import { ModuleService } from "../services/ModuleService";
-import { UserService } from "../services/UserService";
 
 class ModuleController {
   async create(request: Request, response: Response) {

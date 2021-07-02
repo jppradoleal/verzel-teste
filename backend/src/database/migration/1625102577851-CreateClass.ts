@@ -17,8 +17,8 @@ export class CreateClass1625102577851 implements MigrationInterface {
                     isNullable: false,
                 },
                 {
-                    name: "module",
-                    type: "uuid",
+                    name: "moduleId",
+                    type: "module",
                     isNullable: false,
                 },
                 {
@@ -39,7 +39,7 @@ export class CreateClass1625102577851 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    columnNames: ["module"],
+                    columnNames: ["moduleId"],
                     referencedTableName: "modules",
                     referencedColumnNames: ["id"],
                 }
