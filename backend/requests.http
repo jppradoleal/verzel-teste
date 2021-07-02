@@ -21,3 +21,29 @@ content-type: application/json
   "email": "joaopedro@hotmail.com",
   "password": "123abc"
 }
+
+### Modules
+
+GET http://localhost:8080/modules HTTP/1.1
+
+###
+
+POST http://localhost:8080/modules/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Informática básica"
+}
+
+###
+
+PUT http://localhost:8080/modules/09828f33-38a6-4746-8593-4eb9a8877c7e/edit HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Informática avançada"
+}
+
+###
+
+DELETE http://localhost:8080/modules/09828f33-38a6-4746-8593-4eb9a8877c7e/delete HTTP/1.1
