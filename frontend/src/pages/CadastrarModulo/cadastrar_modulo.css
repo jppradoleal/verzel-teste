@@ -1,0 +1,26 @@
+#cadastrar-modulo-page {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 20px auto;
+}
+
+#cadastrar-modulo-page h1{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#cadastrar-modulo-page .form-group {
+  margin: 20px 0;
+}
+
+#cadastrar-modulo-page button {
+  float: right;
+  padding: 5px 15px;
+  transition: transform 0.2s;
+}
+
+#cadastrar-modulo-page button:hover {
+  transform: scale(1.1);
+}

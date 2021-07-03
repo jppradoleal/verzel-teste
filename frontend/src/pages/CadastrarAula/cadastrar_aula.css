@@ -1,0 +1,36 @@
+#cadastrar-aula-page {
+  margin: 20px 32px;
+}
+
+#cadastrar-aula-page h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#cadastrar-aula-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#cadastrar-aula-page button {
+  align-self: flex-end;
+  padding: 5px 15px;
+  transition: transform 0.2s;
+}
+
+#cadastrar-aula-page button:hover {
+  transform: scale(1.1);
+}
+
+#cadastrar-aula-page select {
+  padding: 5px 15px;
+  border-width: 2px;
+}
+
+@media screen and (min-width: 900px) {
+  #cadastrar-aula-page {
+    width: 50%;
+    margin: 20px auto;
+  }
+}

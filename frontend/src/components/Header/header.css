@@ -11,3 +11,25 @@ nav#header {
   height: 48px;
   border-radius: 50px !important;
 }
+
+header {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  background-color: #80FF72;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  transition: transform .2s;
+}
+
+a:hover {
+  transform: scale(1.1);
+}

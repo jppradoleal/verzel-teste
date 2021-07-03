@@ -1,7 +1,9 @@
 .card {
   width: 286px;
   height: 356px;
-  border: 2px solid #43C523;
+  border-width: 2px;
+  border-style: solid;
+  border-image: 1 linear-gradient(145deg, #80FF72, #7EE8FA);
   overflow: hidden;
   padding: 8px;
   border-radius: 5px;
