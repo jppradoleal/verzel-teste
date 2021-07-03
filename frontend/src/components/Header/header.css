@@ -12,6 +12,11 @@ nav#header {
   border-radius: 50px !important;
 }
 
+#header .btn-group {
+  display: flex;
+  gap: 4px;
+}
+
 header {
   margin-top: 20px;
   display: flex;

@@ -1,16 +1,27 @@
 import React from 'react';
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import Button from '../../components/Button';
+import DarkModeContext from '../../contexts/DarkModeContext';
 import './cadastrar_modulo.css';
 
 const CadastrarModulo = () => {
+  const {isDarkMode} = useContext(DarkModeContext);
+  const {register, handleSubmit} = useForm();
+  
+  const onSubmit = (data: FormData) => {
+    console.log(JSON.stringify(data));
+  }
+  
   return (
     <div id="cadastrar-modulo-page">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Cadastrar módulo</h1>
         <div className="form-group">
           <label htmlFor="nome-field">Nome do módulo</label>
-          <input type="text" id="nome-field" className="gradient-border" />
+          <input {...register("nome")} id="nome-field" style={{color: isDarkMode ? "#fff" : "#000"}} className="gradient-border" />
         </div>
-        <button className="gradient-border">Cadastrar</button>
+        <Button text="Cadastrar" />
       </form>
     </div>
   );
