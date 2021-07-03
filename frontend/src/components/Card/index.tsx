@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Card = ({imageUrl, name, start_date}: IProps) => {
-  const strDate = dayjs(start_date).format('DD/MM/YY');
+  const strDate = dayjs(start_date).format('MMM d, YYYY');
   return (
     <div className="card">
       <div style={{background: `url('${imageUrl}')`}} className="header-image"/>

@@ -39,7 +39,7 @@ const CadastrarAula = () => {
     const payload = {
       name: nome,
       module: modulo,
-      start_date: dayjs(inicio).toDate,
+      start_date: dayjs(inicio).toDate(),
     }
 
     api.post("/classes/create", payload, {
