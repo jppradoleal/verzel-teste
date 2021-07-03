@@ -72,3 +72,8 @@ body, #root, .App {
 input {
   padding: 5px 10px;
 }  
+
+.error {
+  color: tomato;
+  font-size: 10px;
+}
