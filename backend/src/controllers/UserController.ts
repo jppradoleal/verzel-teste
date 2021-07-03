@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { NotAuthorizedException } from "../exceptions/NotAuthorizedException";
 import { UserService } from "../services/UserService";
 
 class UserController {

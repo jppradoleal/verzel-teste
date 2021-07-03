@@ -27,6 +27,15 @@ class ClassController {
     response.status(200).json(classes);
   }
 
+  async listByModule(request: Request, response: Response) {
+    const classService = new ClassService();
+    const {module} = request.params;
+
+    const classes = await classService.listByModule(module);
+
+    response.status(200).json(classes);
+  }
+
   async update(request: Request, response: Response) {
     const {id} = request.params;
     const {name, start_date, module} = request.body;

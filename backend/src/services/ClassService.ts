@@ -57,6 +57,14 @@ class ClassService {
     return classToPlain(classes);
   }
 
+  async listByModule(module: string) {
+    const classRepository = getCustomRepository(ClassRepository);
+
+    const classes = classRepository.find({where: {module}, relations: ["module"]});
+
+    return classToPlain(classes);
+  }
+
   async update(id: string, updatedClass: IUpdateClassRequest) {
     const classRepository = getCustomRepository(ClassRepository);
     const moduleService = new ModuleService();

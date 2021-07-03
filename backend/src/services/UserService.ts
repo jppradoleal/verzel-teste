@@ -56,6 +56,14 @@ class UserService {
     return classToPlain(users);
   }
 
+  async getById(id: string) {
+    const userRepository = getCustomRepository(UserRepository);
+
+    const user = await userRepository.findOne(id);
+
+    return classToPlain(user);
+  }
+
   async authenticate({email, password}: IAuthenticateUserRequest) {
     const userRepository = getCustomRepository(UserRepository);
 
@@ -76,6 +84,7 @@ class UserService {
     const token = sign(
       {
         email: user.email,
+        admin: user.isAdmin,
       },
       process.env.JWT_SECRET || "9f7de19309edb4f1970bfcc845146c9c",
       {

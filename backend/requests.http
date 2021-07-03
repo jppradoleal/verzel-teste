@@ -4,12 +4,12 @@ GET http://localhost:8080/users HTTP/1.1
 
 POST http://localhost:8080/users/create HTTP/1.1
 content-type: application/json
-Authorization: "Bearer eyhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvYW9wZWRyb0Bob3RtYWlsLmNvbSIsImlhdCI6MTYyNTExMTU5MCwiZXhwIjoxNjI1MTk3OTkwLCJzdWIiOiIxNjYxYjM1MC03OGQ4LTQyYWMtYmUxMC1lYzM0NDAwMTgyOTIifQ.cv5lmLoi-UAQOXU6BUldQAICdXaMZXa3ph4QVYjGy7E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvbmhAaG90bWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYyNTM1NTU5OCwiZXhwIjoxNjI1NDQxOTk4LCJzdWIiOiIwMjc3OGIwYS0xZWE2LTQ5MTAtYTc4Yy1hOTFhZjIzZGIyYmUifQ.jtxe4Pr7GyLJcP-tTfy50VzyWGeEAbwndzDXv5YfDsU
 
 {
-  "email": "joaopedro0128@hotmail.com",
+  "email": "johh@hotmail.com",
   "name": "João",
-  "admin": true,
+  "admin": false,
   "password": "123abc"
 }
 
@@ -18,7 +18,7 @@ POST http://localhost:8080/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "joaopedro@hotmail.com",
+  "email": "johh@hotmail.com",
   "password": "123abc"
 }
 
