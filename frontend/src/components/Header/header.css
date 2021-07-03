@@ -1,0 +1,13 @@
+nav#header {
+  margin: 0 32px;
+  margin-top: 32px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+#header button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px !important;
+}

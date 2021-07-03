@@ -1,0 +1,41 @@
+#login-page {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 64px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-image {
+  width: 100%;
+  height: auto;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 5px 10px;
+}
+
+button {
+  padding: 5px 15px;
+  align-self: flex-end;
+}
