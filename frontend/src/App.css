@@ -62,3 +62,12 @@ body, #root, .App {
   border-style: solid;
   border-image: 1 linear-gradient(to right, #80FF72, #7EE8FA);
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 5px 10px;
+}  

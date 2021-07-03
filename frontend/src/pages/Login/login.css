@@ -9,7 +9,7 @@
   gap: 20px;
 }
 
-.login-image {
+#login-page .login-image {
   width: 100%;
   height: auto;
 }
@@ -21,21 +21,35 @@
   width: 100%;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
+#login-page label {
   display: block;
   margin-bottom: 8px;
-}
-
-input {
-  padding: 5px 10px;
 }
 
 button {
   padding: 5px 15px;
   align-self: flex-end;
+}
+
+@media screen and (min-width: 900px) {
+  #login-page {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+  }
+
+  #login-form {
+    width: 30%;
+    background-color: #efefef;
+    height: 100%;
+    padding: 64px;
+    justify-content: center;
+  }
+
+  #login-page .login-image {
+    width: 40%;
+    margin: 0 auto;
+  }
 }

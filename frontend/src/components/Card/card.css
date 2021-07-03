@@ -1,0 +1,29 @@
+.card {
+  width: 286px;
+  height: 356px;
+  border: 2px solid #43C523;
+  overflow: hidden;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.card .header-image {
+  background-size: cover;
+  height: 132px;
+  border-radius: 5px 5px 0 0;
+}
+
+.card .title {
+  margin: 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card .date {
+  margin: 8px 0;
+  font-weight: 300;
+}
+
+.card .description {
+  line-height: 1.2rem;
+}
