@@ -1,29 +1,27 @@
-import dayjs from 'dayjs';
+import { Dayjs } from 'dayjs';
 import React from 'react';
-import { FaPencilAlt, FaTrash } from 'react-icons/fa';
+import EditButtons from '../EditButtons';
 import './card.css';
 
 interface IProps {
   imageUrl: string,
   name: string,
-  start_date: Date,
+  start_date: Dayjs,
   description: string,
+  authenticated: boolean,
   handleDelete: () => void,
   handleEdit: () => void,
 }
 
-const Card = ({imageUrl, name, start_date, description, handleDelete, handleEdit}: IProps) => {
-  const strDate = dayjs(start_date).format('MMM d, YYYY');
+const Card = ({imageUrl, name, start_date, description, authenticated, handleDelete, handleEdit}: IProps) => {
+  const strDate = start_date.format('MMM DD, YYYY');
   return (
     <div className="card">
-      <div style={{background: `url('${imageUrl}')`}} className="header-image"/>
+      <div style={{backgroundImage: `url('${imageUrl}')`}} className="header-image"/>
       <h2 className="title">{name}</h2>
       <h3 className="date">Início: {strDate}</h3>
-      <p className="description">{description.split(" ").splice(0, 50).join(" ")}</p>
-      <div className="btn-group">
-        <button className="gradient-border" onClick={handleDelete}><FaTrash color="#80FF72"/></button>
-        <button className="gradient-border" onClick={handleEdit}><FaPencilAlt color="#80FF72"/></button>
-      </div>
+      <p className="description">{description?.split(" ").splice(0, 50).join(" ")}</p>
+      {authenticated && <EditButtons handleDelete={handleDelete} handleEdit={handleEdit}/>}
     </div>
   );
 }

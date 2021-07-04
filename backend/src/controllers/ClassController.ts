@@ -6,6 +6,10 @@ class ClassController {
   async create(request: Request, response: Response) {
     const { name, module, start_date } = request.body;
 
+    console.log(request.file);
+
+    const thumbnail = request?.file.path;
+
     const formattedDate = dayjs(start_date).toDate();
 
     const classService = new ClassService();
@@ -14,6 +18,7 @@ class ClassController {
       name,
       moduleId: module,
       start_date: formattedDate,
+      thumbnail: thumbnail || null
     });
 
     response.status(201).json(savedClass);

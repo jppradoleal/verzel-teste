@@ -15,7 +15,7 @@ class UserController {
       password
     });
 
-    return response.status(201).json(user);
+    response.status(201).json(user);
   }
 
   async list(request: Request, response: Response) {
@@ -35,7 +35,7 @@ class UserController {
       password,
     });
 
-    return response.status(200).json(token);
+    response.status(200).json(token);
   }
 }
 

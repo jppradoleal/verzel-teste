@@ -1,9 +1,11 @@
 nav#header {
+  position: relative;
   margin: 0 32px;
   margin-top: 32px;
 
   display: flex;
   justify-content: space-between;
+
 }
 
 #header button {
@@ -15,14 +17,16 @@ nav#header {
 #header .btn-group {
   display: flex;
   gap: 4px;
+  z-index: 1;
 }
 
 header {
+  margin: 0 20px;
   margin-top: 20px;
   display: flex;
   gap: 16px;
   font-size: 18px;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 

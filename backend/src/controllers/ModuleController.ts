@@ -4,11 +4,11 @@ import { ModuleService } from "../services/ModuleService";
 
 class ModuleController {
   async create(request: Request, response: Response) {
-    const {name} = request.body;
+    const {name, description} = request.body;
 
     const moduleService = new ModuleService();
 
-    const module = await moduleService.create(name);
+    const module = await moduleService.create(name, description);
 
     response.status(201).json(module);
   }

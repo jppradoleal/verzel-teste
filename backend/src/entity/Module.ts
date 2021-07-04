@@ -9,6 +9,9 @@ class Module {
   @Column()
   name: string;
 
+  @Column()
+  description: string;
+
   @CreateDateColumn({name: "created_at"})
   createdAt: Date;
 

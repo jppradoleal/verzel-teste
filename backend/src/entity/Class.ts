@@ -15,7 +15,11 @@ class Class {
   @ManyToOne(() => Module, module => module.id)
   module: Module;
 
-  @Transform((value) => dayjs(value.value).toISOString(), {})
+  @Transform(value => `${process.env.URL}/${value.value}`)
+  @Column({name: "thumbnail_url"})
+  imageUrl: string;
+
+  @Transform((value) => dayjs(value.value).toISOString())
   @Column()
   start_date: Date;
   

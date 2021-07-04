@@ -2,7 +2,7 @@ import { HttpException } from "./HttpException";
 
 class InvalidRequestException extends HttpException {
   constructor(message: string) {
-    super(message, 406);
+    super(message, 401);
 
     Object.setPrototypeOf(this, InvalidRequestException.prototype)
   }

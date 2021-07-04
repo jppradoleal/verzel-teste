@@ -12,6 +12,7 @@ config();
 
 const app = express();
 app.use(cors());
+app.use('/public', express.static('public'));
 app.use(express.json());
 
 app.use(router);

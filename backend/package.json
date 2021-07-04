@@ -12,6 +12,7 @@
    "author": "JPPradoLeal",
    "license": "ISC",
    "dependencies": {
+      "@types/multer": "^1.4.6",
       "bcryptjs": "^2.4.3",
       "class-transformer": "^0.4.0",
       "cors": "^2.8.5",
@@ -20,6 +21,7 @@
       "express": "^4.17.1",
       "express-async-errors": "^3.1.1",
       "jsonwebtoken": "^8.5.1",
+      "multer": "^1.4.2",
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.10",
       "sqlite3": "^5.0.2",

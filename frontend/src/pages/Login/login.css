@@ -1,6 +1,6 @@
 #login-page {
   width: 70%;
-  height: 100%;
+  height: calc( 100vh - 144px);
   display: flex;
   margin: 0 auto;
   margin-top: 64px;
@@ -26,9 +26,10 @@
   margin-bottom: 8px;
 }
 
-button {
+#login-page #login-form button {
   padding: 5px 15px;
   align-self: flex-end;
+  color: #fff;
 }
 
 @media screen and (min-width: 900px) {
@@ -51,5 +52,13 @@ button {
   #login-page .login-image {
     width: 40%;
     margin: 0 auto;
+  }
+
+  #login-page #login-form .form-group label {
+    color: black;
+  }
+
+  #login-page #login-form button {
+    color: black;
   }
 }

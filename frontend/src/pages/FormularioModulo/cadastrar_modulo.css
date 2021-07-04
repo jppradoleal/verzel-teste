@@ -1,8 +1,7 @@
 #cadastrar-modulo-page {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  margin: 20px auto;
+  margin: 20px 20px;
 }
 
 #cadastrar-modulo-page h1{
@@ -21,6 +20,14 @@
   transition: transform 0.2s;
 }
 
-#cadastrar-modulo-page button:hover {
-  transform: scale(1.1);
+#cadastrar-modulo-page textarea {
+  border-width: 2px;
+  resize: none;
+}
+
+@media screen and(min-width: 900px) {
+  #cadastrar-modulo-page {
+    width: 50%;
+    margin: 20px auto;
+  }
 }

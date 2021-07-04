@@ -3,8 +3,13 @@ import { getCustomRepository } from "typeorm";
 import { InvalidRequestException } from "../exceptions/InvalidRequestException";
 import { ModuleRepository } from "../repositories/ModuleRepository";
 
+interface ICreateModule {
+  name: string,
+  description: string,
+}
+
 class ModuleService {
-  async create(name) {
+  async create(name, description) {
     const moduleRepository = getCustomRepository(ModuleRepository);
     if(!name) {
       throw new InvalidRequestException("Name incorrect");
@@ -16,7 +21,7 @@ class ModuleService {
       throw new InvalidRequestException("Module already exists");
     }
 
-    const module = moduleRepository.create({name});
+    const module = moduleRepository.create({name, description});
 
     await moduleRepository.save(module);
 
@@ -26,7 +31,7 @@ class ModuleService {
   async list() {
     const moduleRepository = getCustomRepository(ModuleRepository);
 
-    const modules = await moduleRepository.find();
+    const modules = await moduleRepository.find({order: {name: "ASC"}});
 
     return classToPlain(modules);
   }

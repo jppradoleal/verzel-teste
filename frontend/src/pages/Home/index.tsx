@@ -3,28 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ApiClass, ApiModule } from '../../@types/Api';
 import Card from '../../components/Card';
 import UserContext from '../../contexts/UserContext';
 import api from '../../services/AuthService';
 import './home.css';
 
-interface IApiModule {
-  id: string,
-  name: string,
-}
-
-interface IApiClasses {
-  id: string,
-  name: string,
-  module: {
-    name: string
-  },
-  start_date: string,
-}
-
 const Home = () => {
-  const [modules, setModules] = useState<IApiModule[]>();
-  const [classes, setClasses] = useState<IApiClasses[]>();
+  const [modules, setModules] = useState<ApiModule[]>();
+  const [classes, setClasses] = useState<ApiClass[]>();
 
   const {token} = useContext(UserContext);
 
@@ -33,13 +20,13 @@ const Home = () => {
   const getClasses = () => {
     api.get("/classes")
       .then(response => response.data)
-      .then((data:IApiClasses[]) => setClasses(data))
+      .then((data:ApiClass[]) => setClasses(data))
       .catch(err => toast.error(err.response.data.error));
   }
 
   useEffect(() => {
     api.get("/modules")
-    .then(response => response.data).then((data: IApiModule[]) => {
+    .then(response => response.data).then((data: ApiModule[]) => {
       setModules(data);
     }).catch(err => toast.error(err.response.data.error));
 
@@ -50,7 +37,7 @@ const Home = () => {
     if(v.target.value.length > 0) {
       api.get(`/modules/${v.target.value}/classes`)
       .then(response => response.data)
-      .then((data: IApiClasses[]) => setClasses(data))
+      .then((data: ApiClass[]) => setClasses(data))
       .catch(err => toast.error(err.response.data.error));
     } else {
       getClasses();
@@ -81,17 +68,20 @@ const Home = () => {
         </select>
       </div>
       <div className="card-group">
-        {classes?.map(v => (
+        {classes && classes.length > 0 ? classes.map(v => {
+          console.log(dayjs(v.start_date));
+          return (
           <Card
-            imageUrl="http://via.placeholder.com/500"
+            imageUrl={v.imageUrl}
             name={v.name}
-            start_date={dayjs(v.start_date, "dd/MM/yyyy").toDate()}
-            description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium vero recusandae tempora libero error dignissimos est harum, in sunt sapiente aut? Autem excepturi nulla vel sapiente at cupiditate laudantium sit corporis voluptatem dolores, reiciendis suscipit minima? Nihil sed nemo nostrum non error! Iste ipsa eius ullam obcaecati soluta. Laudantium, debitis! Mollitia accusantium ullam quibusdam provident repellat tenetur quaerat eaque laboriosam perferendis soluta, rerum necessitatibus alias doloremque dolor, facere assumenda eligendi consequatur quisquam? Sapiente odit tempora alias id illum ut dolore placeat, nihil esse tenetur eius deleniti! Omnis, blanditiis magni distinctio facilis eos totam ex, molestias quisquam libero vitae, voluptas soluta."}
+            start_date={dayjs(v.start_date)}
+            description={v.module.description}
+            authenticated={!!token}
             handleEdit={() => handleEditClass(v.id)}
             handleDelete={() => handleDeleteClass(v.id)}
             key={v.id}
           />
-        ))}
+        )}) : <p>Nenhum registro encontrado</p>}
         </div>
     </div>
   );

@@ -1,0 +1,22 @@
+#listar-modulos-page {
+  margin: 20px 20px;
+}
+
+#listar-modulos-page h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modules-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media screen and (min-width: 900px) {
+  #listar-modulos-page {
+    width: 50%;
+    margin: 20px auto;
+  }
+}

@@ -9,6 +9,7 @@ interface ICreateClassRequest {
   name: string,
   moduleId: string,
   start_date: Date,
+  thumbnail: string
 }
 
 interface IUpdateClassRequest {
@@ -18,15 +19,13 @@ interface IUpdateClassRequest {
 }
 
 class ClassService {
-  async create({name, moduleId, start_date}: ICreateClassRequest) {
+  async create({name, moduleId, start_date, thumbnail}: ICreateClassRequest) {
     const moduleService = new ModuleService();
     const classRepository = getCustomRepository(ClassRepository);
 
     const plainModule = await moduleService.getOne(moduleId);
 
     const module = plainToClass(Module, plainModule);
-
-    console.log(module);
 
     const classExists = await classRepository.findOne({name});
     console.log(classExists);
@@ -37,7 +36,8 @@ class ClassService {
     
     const createdClass = classRepository.create({
       name,
-      start_date
+      start_date,
+      imageUrl: thumbnail,
     });
 
     console.log(createdClass);
@@ -52,7 +52,7 @@ class ClassService {
   async list() {
     const classRepository = getCustomRepository(ClassRepository);
 
-    const classes = classRepository.find({relations: ["module"]});
+    const classes = classRepository.find({relations: ["module"], order: {name: "ASC"}});
 
     return classToPlain(classes);
   }
@@ -60,7 +60,7 @@ class ClassService {
   async listByModule(module: string) {
     const classRepository = getCustomRepository(ClassRepository);
 
-    const classes = classRepository.find({where: {module}, relations: ["module"]});
+    const classes = classRepository.find({where: {module}, relations: ["module"], order: {name: "ASC"}});
 
     return classToPlain(classes);
   }

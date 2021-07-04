@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 
-interface IProps {
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   text: string,
 }
 
-const Button = ({text}: IProps) => {
-  const {isDarkMode} = useContext(DarkModeContext);
+const Button = ({text, ...rest}: IProps) => {
   return (
-    <button className="gradient-border" style={{color: isDarkMode ? "#fff" : "#000"}} type="submit">{text}</button>
+    <button className="gradient-border" type="submit" {...rest}>{text}</button>
   );
 }
 

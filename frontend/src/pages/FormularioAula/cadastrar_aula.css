@@ -20,12 +20,12 @@
   transition: transform 0.2s;
 }
 
-#cadastrar-aula-page button:hover {
-  transform: scale(1.1);
-}
-
 #cadastrar-aula-page select {
   padding: 5px 15px;
+  border-width: 2px;
+}
+
+#cadastrar-aula-page .form-group .file-input {
   border-width: 2px;
 }
 

@@ -1,0 +1,11 @@
+.list-component {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-width: 2px;
+  padding: 15px 15px;
+}
+
+.list-component h2 {
+  font-size: 18px;
+}

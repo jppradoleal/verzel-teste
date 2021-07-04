@@ -10,6 +10,7 @@ import './login.css';
 
 const Login = () => {
   const {setToken} = useContext(UserContext);
+
   const [error, setError] = useState("");
   const router = useHistory();
   const { register, handleSubmit } = useForm();
@@ -30,7 +31,7 @@ const Login = () => {
 
       <form id="login-form">
         <div className="form-group">
-          <label htmlFor="email-field" >Email</label>
+          <label htmlFor="email-field">Email</label>
           <input {...register("email")} id="email-field" className="gradient-border" />
         </div>
         <div className="form-group">
@@ -38,7 +39,7 @@ const Login = () => {
           <input {...register("password")} type="password" id="senha-field" className="gradient-border" />
         </div>
         {error.length > 0 ? error : ''}
-        <Button text="Acessar" />
+        <Button text="Acessar"/>
       </form>
     </div>
   );
