@@ -65,6 +65,14 @@ class ClassService {
     return classToPlain(classes);
   }
 
+  async getOne(id: string) {
+    const classRepository = getCustomRepository(ClassRepository);
+
+    const receivedClass = classRepository.findOne({where: {id}, relations: ['module']});
+
+    return classToPlain(receivedClass);
+  }
+
   async update(id: string, updatedClass: IUpdateClassRequest) {
     const classRepository = getCustomRepository(ClassRepository);
     const moduleService = new ModuleService();

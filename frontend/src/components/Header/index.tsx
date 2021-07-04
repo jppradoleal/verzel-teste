@@ -8,10 +8,6 @@ import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import UserContext from '../../contexts/UserContext';
 
-interface IProps {
-  isAuthenticated: boolean
-}
-
 const Header = () => {
   const router = useHistory();
   const {token, setToken} = useContext(UserContext);

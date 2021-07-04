@@ -36,6 +36,15 @@ class ClassController {
     response.status(200).json(classes);
   }
 
+  async getById(request: Request, response: Response) {
+    const classService = new ClassService();
+    const {id} = request.params;
+
+    const receivedClass = await classService.getOne(id);
+
+    response.status(200).json(receivedClass);
+  }
+
   async update(request: Request, response: Response) {
     const {id} = request.params;
     const {name, start_date, module} = request.body;
@@ -46,7 +55,7 @@ class ClassController {
 
     const updatedClass = await classService.update(id, {name, start_date: formattedDate, moduleId: module})
   
-    response.status(200).json(updatedClass);
+    response.status(202).json(updatedClass);
   }
 
   async delete(request: Request, response: Response) {
@@ -54,9 +63,9 @@ class ClassController {
 
     const classService = new ClassService();
 
-    const wasDeleted = await classService.delete(id);
+    await classService.delete(id);
 
-    response.status(200).json(wasDeleted);
+    response.status(202).json("Registry deleted");
   }
 }
 

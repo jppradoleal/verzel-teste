@@ -1,6 +1,8 @@
 import {Module} from "./Module";
 import {Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn, UpdateDateColumn} from "typeorm";
 import {v4 as uuid} from "uuid";
+import { Transform } from "class-transformer";
+import dayjs from "dayjs";
 
 @Entity({name: "classes"})
 class Class {
@@ -13,6 +15,7 @@ class Class {
   @ManyToOne(() => Module, module => module.id)
   module: Module;
 
+  @Transform((value) => dayjs(value.value).toISOString(), {})
   @Column()
   start_date: Date;
   

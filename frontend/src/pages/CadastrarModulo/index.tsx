@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { IRouteParams } from '../../App';
 import Button from '../../components/Button';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import UserContext from '../../contexts/UserContext';
@@ -13,16 +16,35 @@ interface IModuleFormData {
   nome: string,
 }
 
+interface IModuleApi {
+  name: string,
+}
+
 const CadastrarModulo = () => {
+  const {id} = useParams<IRouteParams>();
+
   const {isDarkMode} = useContext(DarkModeContext);
   const {token} = useContext(UserContext);
-  const {register, handleSubmit} = useForm();
+  const {register, handleSubmit, reset, setValue} = useForm();
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    if(id) {
+      api.get(`/modules/${id}`)
+        .then(response => response.data)
+        .then(({name}: IModuleApi) => {
+          setValue('nome', name)
+        })
+        .catch(err => toast.error(err.response.data.error));
+    }
+  }, [id, setValue]);
 
   const onSubmit = ({nome}:IModuleFormData) => {
     if(nome) {
       api.post(
-        "/modules/create", 
+        !id ?
+        "/modules/create"
+        : `/modules/${id}/edit`, 
         {
           name: nome
         }, 
@@ -32,6 +54,7 @@ const CadastrarModulo = () => {
         }
       }).then(response => {
         setError('');
+        reset();
         toast.success(response.statusText);
       }).catch(err => toast.error(err.response.data.error, {role: ""}));
     }

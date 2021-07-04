@@ -12,6 +12,10 @@ import DarkModeContext from './contexts/DarkModeContext';
 import UserContext from './contexts/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
 
+export interface IRouteParams {
+  id: string;
+}
+
 function App() {
   const [isDarkMode, setDarkMode] = useState(false);
 
@@ -49,6 +53,8 @@ function App() {
               <Route path="/login" component={Login}/>
               <GuardedRoute path="/cadastrar_modulo" component={CadastrarModulo} {...guardedRouteProps}/>
               <GuardedRoute path="/cadastrar_aula" component={CadastrarAula} {...guardedRouteProps} />
+              <GuardedRoute path="/editar_modulo/:id" component={CadastrarModulo} {...guardedRouteProps} />
+              <GuardedRoute path="/editar_aula/:id" component={CadastrarAula} {...guardedRouteProps} />
             </Switch>
           </div>
         </BrowserRouter>

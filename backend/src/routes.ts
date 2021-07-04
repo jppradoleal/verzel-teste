@@ -20,6 +20,7 @@ router.post("/login", userController.authenticate);
 
 //#region Modules related 
 router.get("/modules", moduleController.list);
+router.get("/modules/:id", moduleController.getById)
 router.post("/modules/create", isAuthenticated, ensureAdmin, moduleController.create);
 router.put("/modules/:id/edit", isAuthenticated, ensureAdmin, moduleController.update);
 router.delete("/modules/:id/delete", isAuthenticated, ensureAdmin, moduleController.delete);
@@ -27,6 +28,7 @@ router.delete("/modules/:id/delete", isAuthenticated, ensureAdmin, moduleControl
 
 //#region Class related
 router.get("/classes", classController.list);
+router.get("/classes/:id", classController.getById);
 router.get("/modules/:module/classes", classController.listByModule)
 router.post("/classes/create", isAuthenticated, ensureAdmin, classController.create);
 router.put("/classes/:id/edit", isAuthenticated, ensureAdmin, classController.update);

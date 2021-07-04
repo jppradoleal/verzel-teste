@@ -10,7 +10,7 @@ class ModuleController {
 
     const module = await moduleService.create(name);
 
-    return response.status(201).json(module);
+    response.status(201).json(module);
   }
 
   async list(request: Request, response: Response) {
@@ -19,6 +19,16 @@ class ModuleController {
     const modules = await moduleService.list();
 
     response.status(200).json(modules)
+  }
+
+  async getById(request: Request, response: Response) {
+    const {id} = request.params;
+
+    const moduleService = new ModuleService();
+
+    const module = await moduleService.getOne(id);
+  
+    response.status(200).json(module);
   }
 
   async update(request: Request, response: Response) {
@@ -33,7 +43,7 @@ class ModuleController {
 
     const module = await moduleService.update(id, name);
 
-    response.status(200).json(module);
+    response.status(202).json(module);
   }
 
   async delete(request: Request, response: Response) {
@@ -45,9 +55,9 @@ class ModuleController {
 
     const moduleService = new ModuleService();
 
-    const result = await moduleService.delete(id);
+    await moduleService.delete(id);
 
-    response.status(200).json(result);
+    response.status(202).json("Registry deleted");
   }
 }
 
