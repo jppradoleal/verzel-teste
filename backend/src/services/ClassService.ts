@@ -31,8 +31,7 @@ class ClassService {
     const module = plainToClass(Module, plainModule);
 
     const classExists = await classRepository.findOne({name});
-    console.log(classExists);
-    
+
     if(classExists) {
       throw new InvalidRequestException("Class already exists");
     }
@@ -43,8 +42,6 @@ class ClassService {
       imageUrl: thumbnail,
       description: description,
     });
-
-    console.log(createdClass);
 
     createdClass.module = module;
 

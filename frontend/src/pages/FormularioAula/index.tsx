@@ -8,7 +8,7 @@ import api from '../../services/ApiService';
 import UserContext from '../../contexts/UserContext';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-import { ApiClass, ApiModule, RouteParams } from '../../@types/Api';
+import { ApiClass, ModuleWithCount, RouteParams } from '../../@types/Api';
 
 interface IClassWithFile extends Omit<ApiClass, 'module'> {
   thumbnail: FileList,
@@ -23,7 +23,7 @@ const FormularioAula = () => {
 
   const {register, handleSubmit, setValue, reset, formState: { errors, isDirty } } = useForm();
 
-  const [modules, setModules] = useState<ApiModule[]>();
+  const [modules, setModules] = useState<ModuleWithCount[]>();
 
   useEffect(() => {
     (async function() {
@@ -52,7 +52,6 @@ const FormularioAula = () => {
     formData.append('start_date', dayjs(start_date).toString());
     formData.append('thumbnail', thumbnail.item(0) as Blob);
     
-    console.log(formData.values);
     api({
       method: id ? "put" : "post",
       url: id ? `/classes/${id}/edit` : "/classes/create",
@@ -96,7 +95,7 @@ const FormularioAula = () => {
             className="gradient-border">
             <option value={''}>Selecione um módulo</option>
             {modules?.map(v => (
-              <option value={v.id} key={v.id}>{v.name}</option>
+              <option value={v.module.id} key={v.module.id}>{v.module.name}</option>
             ))}
           </select>
           {errors.module && <span className="error">Selecione um módulo</span>}

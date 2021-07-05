@@ -6,8 +6,6 @@ class ClassController {
   async create(request: Request, response: Response) {
     const { name, module, start_date, description } = request.body;
 
-    console.log(request.file);
-
     let thumbnail;
 
     if(request.file) {
