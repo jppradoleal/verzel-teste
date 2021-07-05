@@ -10,6 +10,7 @@ export interface ApiClass {
   id: string;
   name: string;
   imageUrl: string;
+  description: string;
   start_date: string;
   created_at: string;
   updated_at: string;

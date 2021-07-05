@@ -86,7 +86,7 @@ const ListarAulas = () => {
             imageUrl={v.imageUrl}
             name={v.name}
             start_date={dayjs(v.start_date)}
-            description={v.module.description}
+            description={v.description}
             authenticated={!!token}
             handleEdit={() => handleEditClass(v.id)}
             handleDelete={() => handleDeleteClass(v.id)}

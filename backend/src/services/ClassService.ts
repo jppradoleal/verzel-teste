@@ -9,17 +9,20 @@ interface ICreateClassRequest {
   name: string,
   moduleId: string,
   start_date: Date,
-  thumbnail: string
+  thumbnail: string,
+  description: string,
 }
 
 interface IUpdateClassRequest {
   name?: string,
   moduleId?: string,
   start_date?: Date,
+  thumbnail: string,
+  description: string,
 }
 
 class ClassService {
-  async create({name, moduleId, start_date, thumbnail}: ICreateClassRequest) {
+  async create({name, moduleId, start_date, thumbnail, description}: ICreateClassRequest) {
     const moduleService = new ModuleService();
     const classRepository = getCustomRepository(ClassRepository);
 
@@ -38,6 +41,7 @@ class ClassService {
       name,
       start_date,
       imageUrl: thumbnail,
+      description: description,
     });
 
     console.log(createdClass);

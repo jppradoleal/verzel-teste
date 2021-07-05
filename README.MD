@@ -1,1 +1,30 @@
-Teste Fullstack - Verzel
+# Teste Fullstack - Verzel
+
+Site baseado no Devaria.
+
+## Instruções
+* As pastas de back e front-end contém as instruções específicas.
+* O login de administrador é o único disponível, email: admin; password: admin.
+
+## Requisitos
+
+- [x] Home page pública exibindo os módulos e conforme seleciona o módulo exibe as aulas do módulo.
+- [x] Os módulos devem estar ordenados por ordem alfabética assim como as aulas.
+- [] Os módulos devem contabilizar o total de aulas referente.
+- [x] Para cadastro das aulas e módulos deverá haver um login administrativo.
+ - [] Cadastro de usuários é diferencial não obrigatório.
+- [x] As páginas de cadastro devem estar seguras e só acessadas após login autenticado.
+- [x] Todas as requisições privadas precisam de um token válido gerado no login para funcionamento da requisição.
+- [x] O cadastro de aulas deverá ter listagem, criação, edição e deleção de registros
+  - [x] Atributos obrigatórios são: Id, Nome, Módulo, Data de início.
+    - [x] Adicionada thumbnail de aulas.
+- [x] O cadastro de módulos deverá ter listagem, criação, edição e deleção de registros
+  - [x] Atributos obrigatórios são: Id e Nome.
+    - [x] Adicionada descrição do módulo.
+- [x] Back-end deverá ser uma API Rest.
+- [x] Todos os dados deverão ser persistidos em um banco de dados.
+
+## Notas
+* A tela de login tem um espaçamento vertical que não consegui resetar.
+* A descrição da aula traz a descrição do módulo.
+* Duas migrations foram usadas como seeders para o banco, apesar de ferir a responsabilidade das migrations. Optei pelo método pois, por serem apenas 3 registros inseridos, não seria estritamente necessário adicionar uma dependência.

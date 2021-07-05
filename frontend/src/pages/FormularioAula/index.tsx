@@ -32,10 +32,10 @@ const FormularioAula = () => {
         setModules(modules);
 
         if(id) {
-          const classe = (await api.get(`/classes/${id}`)).data;
+          const classe: ApiClass = (await api.get(`/classes/${id}`)).data;
           setValue('name', classe.name);
           setValue('module', classe.module.id)
-          console.log(classe.start_date);
+          setValue('description', classe.description)
           setValue('start_date', dayjs(classe.start_date).format('YYYY-MM-DD'));
         }
       } catch (err) {
@@ -44,9 +44,10 @@ const FormularioAula = () => {
     })();
   }, [id, setValue]);
 
-  const onSubmit = ({name, module: apiModule, start_date, thumbnail}: IClassWithFile) => {
+  const onSubmit = ({name, description, module: apiModule, start_date, thumbnail}: IClassWithFile) => {
     const formData = new FormData();
     formData.append('name', name);
+    formData.append('description', description)
     formData.append('module', apiModule);
     formData.append('start_date', dayjs(start_date).toString());
     formData.append('thumbnail', thumbnail.item(0) as Blob);
@@ -78,6 +79,14 @@ const FormularioAula = () => {
             style={{ color: isDarkMode ? "#fff" : "#000" }} 
             className="gradient-border"/>
           {errors.nome && <span className="error">Insira um nome</span>}
+        </div>
+        <div className="form-group">
+          <label htmlFor="description-field">Descrição</label>
+          <input 
+            {...register("description", {required: true})} 
+            style={{ color: isDarkMode ? "#fff" : "#000" }} 
+            className="gradient-border"/>
+          {errors.nome && <span className="error">Insira uma descrição</span>}
         </div>
         <div className="form-group">
           <label htmlFor="modulo-field">Módulo</label>

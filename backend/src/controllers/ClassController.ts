@@ -4,7 +4,7 @@ import { ClassService } from "../services/ClassService";
 
 class ClassController {
   async create(request: Request, response: Response) {
-    const { name, module, start_date } = request.body;
+    const { name, module, start_date, description } = request.body;
 
     console.log(request.file);
 
@@ -22,7 +22,8 @@ class ClassController {
       name,
       moduleId: module,
       start_date: formattedDate,
-      thumbnail: thumbnail || null
+      thumbnail: thumbnail || null,
+      description: description,
     });
 
     response.status(201).json(savedClass);
@@ -56,13 +57,19 @@ class ClassController {
 
   async update(request: Request, response: Response) {
     const {id} = request.params;
-    const {name, start_date, module} = request.body;
+    const {name, start_date, module: moduleId, description} = request.body;
+
+    let thumbnail;
+
+    if(request.file) {
+      thumbnail = request.file.path;
+    }
 
     const formattedDate = dayjs(start_date).toDate();
 
     const classService = new ClassService();
 
-    const updatedClass = await classService.update(id, {name, start_date: formattedDate, moduleId: module})
+    const updatedClass = await classService.update(id, {name, start_date: formattedDate, thumbnail, moduleId, description});
   
     response.status(202).json(updatedClass);
   }

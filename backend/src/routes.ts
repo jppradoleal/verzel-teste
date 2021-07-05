@@ -32,7 +32,7 @@ router.get("/classes", classController.list);
 router.get("/classes/:id", classController.getById);
 router.get("/modules/:module/classes", classController.listByModule)
 router.post("/classes/create", isAuthenticated, ensureAdmin, upload.single("thumbnail"), classController.create);
-router.put("/classes/:id/edit", isAuthenticated, ensureAdmin, classController.update);
+router.put("/classes/:id/edit", isAuthenticated, ensureAdmin, upload.single("thumbnail"), classController.update);
 router.delete("/classes/:id/delete", isAuthenticated, ensureAdmin, classController.delete);
 //#endregion
 
