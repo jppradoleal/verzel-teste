@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import './modal.css';
 
 interface IProps {
     isOpen: boolean,
@@ -23,8 +24,8 @@ const ConfirmDeleteModal = ({isOpen, closeModal, onAccept}:IProps) => {
         <Modal isOpen={isOpen} onRequestClose={closeModal} contentLabel="Confirmar deleção" id="modal" style={customStyles} >
             <p>Este registro não poderá ser recuperado, tem certeza que deseja excluí-lo?</p>
             <div className="btn-group">
-                <button onClick={closeModal} className="reject">Não</button>
-                <button onClick={onAccept} className="accept">Sim</button>
+                <button onClick={closeModal} className="reject">Cancelar</button>
+                <button onClick={onAccept} className="accept">Excluir</button>
             </div>
         </Modal>
     );

@@ -32,13 +32,13 @@ const ListarModulosAulas = () => {
         setModules(state => state?.filter(v => v.module.id !== id));
       })
       .catch(err => toast.error(err.response.data.error))
+      setModalOpen(false);
   }
 
   useEffect(() => {
     api.get("/modules")
       .then(response => response.data)
       .then((data: ModuleWithCount[]) => {
-        console.log(data);
         setModules(data);
       })
       .catch(err => toast.error(err.response.data.error));
@@ -54,7 +54,7 @@ const ListarModulosAulas = () => {
               imageUrl=""
               name={v.module.name}
               description={v.module.description}
-              headerBadge={v.classCount}
+              headerBadge={v.classCount || '0'}
               authenticated={!!token}
               handleEdit={() => handleEdit(v.module.id)}
               handleDelete={() => {

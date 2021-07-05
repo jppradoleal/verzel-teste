@@ -28,7 +28,6 @@ export default async function(request: Request, response: Response, next: NextFu
 
     return next();
   } catch(err) {
-    console.log(err);
     throw new NotAuthorizedException();
   }
 }

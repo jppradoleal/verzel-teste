@@ -25,6 +25,10 @@
   border-width: 2px;
 }
 
+#cadastrar-aula-page select option {
+  color: black;
+}
+
 #cadastrar-aula-page .form-group .file-input {
   border-width: 2px;
 }

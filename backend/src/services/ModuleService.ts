@@ -54,7 +54,6 @@ class ModuleService {
       modulesCount.push(moduleCount);
     }
 
-    console.log(modulesCount);
     return classToPlain(modulesCount);
   }
 
