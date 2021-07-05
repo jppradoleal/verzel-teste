@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import DarkModeContext from '../../contexts/DarkModeContext';
+import React from 'react';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
   text: string,

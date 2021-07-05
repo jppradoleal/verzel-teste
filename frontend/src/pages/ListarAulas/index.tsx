@@ -1,15 +1,17 @@
+import React, { useEffect, useState, useContext } from 'react';
 import dayjs from 'dayjs';
-import React, { useEffect, useState } from 'react';
-import { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { FaArrowCircleLeft } from 'react-icons/fa';
+import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ApiClass, ApiModule } from '../../@types/Api';
+import { ApiClass, ApiModule, IRouteParams } from '../../@types/Api';
 import Card from '../../components/Card';
 import UserContext from '../../contexts/UserContext';
 import api from '../../services/AuthService';
-import './home.css';
+import './listar_aulas.css';
 
-const Home = () => {
+const ListarAulas = () => {
+  const {id} = useParams<IRouteParams>();
+
   const [modules, setModules] = useState<ApiModule[]>();
   const [classes, setClasses] = useState<ApiClass[]>();
 
@@ -24,21 +26,30 @@ const Home = () => {
       .catch(err => toast.error(err.response.data.error));
   }
 
-  useEffect(() => {
-    api.get("/modules")
-    .then(response => response.data).then((data: ApiModule[]) => {
-      setModules(data);
-    }).catch(err => toast.error(err.response.data.error));
-
-    getClasses();
-  }, []);
-
-  const handleModuleSelection = (v: React.ChangeEvent<HTMLSelectElement>) => {
-    if(v.target.value.length > 0) {
-      api.get(`/modules/${v.target.value}/classes`)
+  const getSpecificModule = (id: string) => {
+    api.get(`/modules/${id}/classes`)
       .then(response => response.data)
       .then((data: ApiClass[]) => setClasses(data))
       .catch(err => toast.error(err.response.data.error));
+  }
+
+  useEffect(() => {
+    if(id) {
+      getSpecificModule(id);
+    } else {
+      api.get("/modules")
+      .then(response => response.data).then((data: ApiModule[]) => {
+        setModules(data);
+      }).catch(err => toast.error(err.response.data.error));
+      
+      getClasses();
+    }
+  }, [id]);
+
+  const handleModuleSelection = (v: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = v.target.value;
+    if(value.length > 0) {
+      getSpecificModule(value);
     } else {
       getClasses();
     }
@@ -58,18 +69,18 @@ const Home = () => {
   const handleEditClass = (id:string) => history.push(`/editar_aula/${id}`);
 
   return (
-    <div id="home-page">
+    <div id="listar-aulas-page">
+      {id && <button className="gradient-border go-back-btn" onClick={() => history.goBack()} aria-label="Voltar"><FaArrowCircleLeft color="#80FF72" /></button>}
       <div className="form">
-        <select onChange={handleModuleSelection}>
+        {!id && <select onChange={handleModuleSelection}>
           <option value=''>Filtrar por módulo</option>
           {modules?.map(v => (
             <option key={v.id} value={v.id}>{v.name}</option>
           ))}
-        </select>
+        </select>}
       </div>
       <div className="card-group">
         {classes && classes.length > 0 ? classes.map(v => {
-          console.log(dayjs(v.start_date));
           return (
           <Card
             imageUrl={v.imageUrl}
@@ -87,4 +98,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default ListarAulas;

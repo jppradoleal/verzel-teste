@@ -1,12 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useContext } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ApiModule } from '../../@types/Api';
-import { IRouteParams } from '../../App';
+import { ApiModule, IRouteParams } from '../../@types/Api';
 import Button from '../../components/Button';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import UserContext from '../../contexts/UserContext';
@@ -29,8 +25,9 @@ const FormularioModulo = () => {
     if (id) {
       api.get(`/modules/${id}`)
         .then(response => response.data)
-        .then(({ name }: ApiModule) => {
-          setValue('name', name)
+        .then(({ name, description }: ApiModule) => {
+          setValue('name', name);
+          setValue('description', description);
         })
         .catch(err => toast.error(err.response.data.error));
     }

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import Button from '../../components/Button';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import './cadastrar_aula.css';
@@ -8,14 +7,12 @@ import dayjs from 'dayjs';
 import api from '../../services/AuthService';
 import UserContext from '../../contexts/UserContext';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { IRouteParams } from '../../App';
-import { ApiClass, ApiModule } from '../../@types/Api';
+import { ApiClass, ApiModule, IRouteParams } from '../../@types/Api';
 
-interface IClassWithFile extends ApiClass {
+interface IClassWithFile extends Omit<ApiClass, 'module'> {
   thumbnail: FileList,
+  module: string
 }
 
 const FormularioAula = () => {
@@ -49,10 +46,8 @@ const FormularioAula = () => {
 
   const onSubmit = ({name, module: apiModule, start_date, thumbnail}: IClassWithFile) => {
     const formData = new FormData();
-
-    
     formData.append('name', name);
-    formData.append('module', apiModule.id);
+    formData.append('module', apiModule);
     formData.append('start_date', dayjs(start_date).toString());
     formData.append('thumbnail', thumbnail.item(0) as Blob);
     
@@ -92,7 +87,7 @@ const FormularioAula = () => {
             className="gradient-border">
             <option value={''}>Selecione um módulo</option>
             {modules?.map(v => (
-              <option value={v.id}>{v.name}</option>
+              <option value={v.id} key={v.id}>{v.name}</option>
             ))}
           </select>
           {errors.module && <span className="error">Selecione um módulo</span>}

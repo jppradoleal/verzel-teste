@@ -25,7 +25,7 @@
   resize: none;
 }
 
-@media screen and(min-width: 900px) {
+@media screen and (min-width: 900px) {
   #cadastrar-modulo-page {
     width: 50%;
     margin: 20px auto;

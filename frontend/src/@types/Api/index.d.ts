@@ -15,3 +15,7 @@ export interface ApiClass {
   updated_at: string;
   module: ApiModule;
 }
+
+export interface IRouteParams {
+  id: string;
+}

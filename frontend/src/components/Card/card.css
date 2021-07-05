@@ -37,10 +37,17 @@
   height: 200px;
   overflow: hidden;
 }
-.card .btn-group {
+
+.card .footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .footer .btn-group {
   float: right;
   display: flex;
   flex-direction: row;
-  margin-top: 8px;
   gap: 8px;
 }

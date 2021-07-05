@@ -6,18 +6,14 @@ import './App.css';
 import GuardedRoute, { IGuardedRouteProps } from './components/GuardedRoute';
 import Header from './components/Header';
 import Login from './pages/Login';
-import Home from './pages/Home';
 import FormularioModulo from './pages/FormularioModulo';
 import FormularioAula from './pages/FormularioAula';
 import DarkModeContext from './contexts/DarkModeContext';
 import UserContext from './contexts/UserContext';
 import 'react-toastify/dist/ReactToastify.css';
-import ListarModulos from './pages/ListarModulos';
 import LoadingContext from './contexts/LoadingContext';
-
-export interface IRouteParams {
-  id: string;
-}
+import ListarAulas from './pages/ListarAulas';
+import ListarModulosAulas from './pages/ListarModulosAulas';
 
 function App() {
   const [isDarkMode, setDarkMode] = useState(true);
@@ -72,11 +68,12 @@ function App() {
               <ToastContainer />
               <Header />
               <Switch>
-                <Route path="/" exact component={Home} />
+                <Route path="/" exact component={ListarModulosAulas} />
                 <Route path="/login" component={Login} />
+                <Route path="/listar_aulas" component={ListarAulas} />
+                <Route path="/:id/listar_aulas" component={ListarAulas} />
                 <GuardedRoute path="/cadastrar_aula" component={FormularioAula} {...guardedRouteProps} />
                 <GuardedRoute path="/editar_aula/:id" component={FormularioAula} {...guardedRouteProps} />
-                <GuardedRoute path="/modulos" component={ListarModulos} {...guardedRouteProps} />
                 <GuardedRoute path="/cadastrar_modulo" component={FormularioModulo} {...guardedRouteProps} />
                 <GuardedRoute path="/editar_modulo/:id" component={FormularioModulo} {...guardedRouteProps} />
               </Switch>

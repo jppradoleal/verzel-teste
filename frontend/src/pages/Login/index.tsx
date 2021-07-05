@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import tutorialImage from '../../assets/login.svg';
@@ -38,7 +37,7 @@ const Login = () => {
           <label htmlFor="senha-field">Senha</label>
           <input {...register("password")} type="password" id="senha-field" className="gradient-border" />
         </div>
-        {error.length > 0 ? error : ''}
+        <p style={{color: 'tomato'}}>{error.length > 0 ? error : ''}</p>
         <Button text="Acessar"/>
       </form>
     </div>

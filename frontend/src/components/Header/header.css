@@ -28,6 +28,7 @@ header {
   font-size: 18px;
   align-items: stretch;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 a {
