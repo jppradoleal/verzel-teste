@@ -7,7 +7,7 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvbmhAaG90bWFpbC5jb20iLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYyNTM1NTU5OCwiZXhwIjoxNjI1NDQxOTk4LCJzdWIiOiIwMjc3OGIwYS0xZWE2LTQ5MTAtYTc4Yy1hOTFhZjIzZGIyYmUifQ.jtxe4Pr7GyLJcP-tTfy50VzyWGeEAbwndzDXv5YfDsU
 
 {
-  "email": "johh@hotmail.com",
+  "email": "john@hotmail.com",
   "name": "João",
   "admin": false,
   "password": "123abc"
@@ -18,13 +18,14 @@ POST http://localhost:8080/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "johh@hotmail.com",
-  "password": "123abc"
+  "email": "admin",
+  "password": "admin"
 }
 
 ### Modules
 
 GET http://localhost:8080/modules HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluIiwiYWRtaW4iOnRydWUsImlhdCI6MTYyNTQ5MDU5MywiZXhwIjoxNjI1NTc2OTkzLCJzdWIiOiJiNjg5NTg5My00MGU2LTRkNDQtOGFhMC0wZDI2YTVmM2ZmMzQifQ.iu4RW-8KWbnJ8fGv4uxsKjni6XZZ2-nUXShgWxOe0Fs
 
 ###
 

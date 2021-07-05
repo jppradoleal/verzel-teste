@@ -10,7 +10,7 @@ Site baseado no Devaria.
 
 - [x] Home page pública exibindo os módulos e conforme seleciona o módulo exibe as aulas do módulo.
 - [x] Os módulos devem estar ordenados por ordem alfabética assim como as aulas.
-- [] Os módulos devem contabilizar o total de aulas referente.
+- [x] Os módulos devem contabilizar o total de aulas referente.
 - [x] Para cadastro das aulas e módulos deverá haver um login administrativo.
  - [] Cadastro de usuários é diferencial não obrigatório.
 - [x] As páginas de cadastro devem estar seguras e só acessadas após login autenticado.
@@ -26,5 +26,5 @@ Site baseado no Devaria.
 
 ## Notas
 * A tela de login tem um espaçamento vertical que não consegui resetar.
-* A descrição da aula traz a descrição do módulo.
-* Duas migrations foram usadas como seeders para o banco, apesar de ferir a responsabilidade das migrations. Optei pelo método pois, por serem apenas 3 registros inseridos, não seria estritamente necessário adicionar uma dependência.
+* Duas migrations foram usadas como seeders para o banco, apesar de ferir a responsabilidade das migrations. Optei pelo método pois, por serem apenas 3 registros inseridos, seria um pouquinho exagerado adicionar uma dependência.
+* Para manter a facilidade no deploy com o uso do sqlite, foi necessário fazer uma pequena "gambiarra". Na listagem de módulos, é feita uma consulta na contagem de classes que estão relacionadas à certo módulo, ao invés de utilizar uma comunicação "two-way"(onde uma coluna one-to-many "sabe" do lado many-to-one). Isso se deu pelo fato de que o SQLite não possui um tipo de dado array.

@@ -4,13 +4,18 @@ import { toast } from "react-toastify";
 import { ApiModule } from "../../@types/Api";
 import Card from '../../components/Card';
 import UserContext from "../../contexts/UserContext";
-import api from "../../services/AuthService";
+import api from "../../services/ApiService";
 import './listar-modulos-aulas.css';
+
+interface IModuleWithCount {
+  module: ApiModule,
+  classCount: number
+}
 
 const ListarModulosAulas = () => {
   const { token } = useContext(UserContext);
 
-  const [modules, setModules] = useState<ApiModule[]>();
+  const [modules, setModules] = useState<IModuleWithCount[]>();
 
   const history = useHistory();
 
@@ -26,7 +31,7 @@ const ListarModulosAulas = () => {
     })
       .then(response => {
         toast.success(response.data);
-        setModules(state => state?.filter(v => v.id !== id));
+        setModules(state => state?.filter(v => v.module.id !== id));
       })
       .catch(err => toast.error(err.response.data.error))
   }
@@ -34,7 +39,7 @@ const ListarModulosAulas = () => {
   useEffect(() => {
     api.get("/modules")
       .then(response => response.data)
-      .then((data: ApiModule[]) => {
+      .then((data: IModuleWithCount[]) => {
         setModules(data);
       })
       .catch(err => toast.error(err.response.data.error));
@@ -47,13 +52,14 @@ const ListarModulosAulas = () => {
           return (
             <Card
               imageUrl=""
-              name={v.name}
-              description={v.description}
+              name={v.module.name}
+              description={v.module.description}
+              headerBadge={v.classCount}
               authenticated={!!token}
-              handleEdit={() => handleEdit(v.id)}
-              handleDelete={() => handleDelete(v.id)}
-              actionUrl={`/${v.id}/listar_aulas`}
-              key={v.id}
+              handleEdit={() => handleEdit(v.module.id)}
+              handleDelete={() => handleDelete(v.module.id)}
+              actionUrl={`/${v.module.id}/listar_aulas`}
+              key={v.module.id}
             />
           )
         }) : <p>Nenhum registro encontrado</p>}

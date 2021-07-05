@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import tutorialImage from '../../assets/login.svg';
 import Button from '../../components/Button';
 import UserContext from '../../contexts/UserContext';
-import api from '../../services/AuthService';
+import api from '../../services/ApiService';
 import './login.css';
 
 const Login = () => {

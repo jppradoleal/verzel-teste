@@ -4,7 +4,7 @@ import DarkModeContext from '../../contexts/DarkModeContext';
 import './cadastrar_aula.css';
 import { useForm } from 'react-hook-form';
 import dayjs from 'dayjs';
-import api from '../../services/AuthService';
+import api from '../../services/ApiService';
 import UserContext from '../../contexts/UserContext';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';

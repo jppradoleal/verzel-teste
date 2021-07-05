@@ -11,16 +11,20 @@ interface IProps {
   description: string,
   authenticated: boolean,
   actionUrl?: string,
+  headerBadge?: string | number,
   handleDelete: () => void,
   handleEdit: () => void,
 }
 
-const Card = ({imageUrl, name, start_date, description, authenticated, actionUrl, handleDelete, handleEdit}: IProps) => {
+const Card = ({imageUrl, name, start_date, description, headerBadge, authenticated, actionUrl, handleDelete, handleEdit}: IProps) => {
   const strDate = start_date?.format('MMM DD, YYYY');
   return (
     <div className="card">
       <div style={{backgroundImage: `url('${imageUrl || "/placeholder.svg"}')`}} className="header-image"/>
-      <h2 className="title">{name}</h2>
+      <div className="card-header">
+        <h2 className="title">{name}</h2>
+        {headerBadge && <p className="badge">{headerBadge}</p>}
+      </div>
       { strDate && <h3 className="date">Início: {strDate}</h3>}
       <p className="description">{description?.split(" ").splice(0, 50).join(" ")}</p>
       <div className="footer">

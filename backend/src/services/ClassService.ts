@@ -69,6 +69,12 @@ class ClassService {
     return classToPlain(classes);
   }
 
+  async countClassesWithinModule(module: string) {
+    const classRepository = getCustomRepository(ClassRepository);
+
+    return await classRepository.count({where: {module}});
+  }
+
   async getOne(id: string) {
     const classRepository = getCustomRepository(ClassRepository);
 

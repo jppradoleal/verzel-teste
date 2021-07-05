@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { ApiClass, ApiModule, IRouteParams } from '../../@types/Api';
 import Card from '../../components/Card';
 import UserContext from '../../contexts/UserContext';
-import api from '../../services/AuthService';
+import api from '../../services/ApiService';
 import './listar_aulas.css';
 
 const ListarAulas = () => {

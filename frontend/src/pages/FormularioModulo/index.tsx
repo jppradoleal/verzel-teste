@@ -6,7 +6,7 @@ import { ApiModule, IRouteParams } from '../../@types/Api';
 import Button from '../../components/Button';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import UserContext from '../../contexts/UserContext';
-import api from '../../services/AuthService';
+import api from '../../services/ApiService';
 import './cadastrar_modulo.css';
 
 const FormularioModulo = () => {

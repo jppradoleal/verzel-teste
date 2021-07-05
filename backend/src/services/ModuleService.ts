@@ -1,11 +1,19 @@
 import { classToPlain } from "class-transformer";
 import { getCustomRepository } from "typeorm";
+import { Module } from "../entity/Module";
 import { InvalidRequestException } from "../exceptions/InvalidRequestException";
 import { ModuleRepository } from "../repositories/ModuleRepository";
+import { ClassService } from "./ClassService";
+import { UserService } from "./UserService";
 
 interface ICreateModule {
   name: string,
   description: string,
+}
+
+interface IListModuleWithClassesCount {
+  module: Module,
+  classCount: number
 }
 
 class ModuleService {
@@ -30,10 +38,24 @@ class ModuleService {
 
   async list() {
     const moduleRepository = getCustomRepository(ModuleRepository);
+    const classService = new ClassService();
 
     const modules = await moduleRepository.find({order: {name: "ASC"}});
 
-    return classToPlain(modules);
+    let modulesCount: IListModuleWithClassesCount[] = [];
+
+    for(let module of modules) {
+      let moduleCount = {
+        module: module,
+        classCount: await classService.countClassesWithinModule(module.id),
+      } as IListModuleWithClassesCount;
+  
+      
+      modulesCount.push(moduleCount);
+    }
+
+    console.log(modulesCount);
+    return classToPlain(modulesCount);
   }
 
   async getOne(id: string) {
