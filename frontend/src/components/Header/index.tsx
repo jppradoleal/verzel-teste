@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./header.css";
 import { FaMoon, FaSun, FaUserAlt, FaSignOutAlt, FaHome } from 'react-icons/fa';
 import Logo from '../../assets/logo.svg';
 import LogoWhite from '../../assets/logo-white.svg';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import UserContext from '../../contexts/UserContext';
 
