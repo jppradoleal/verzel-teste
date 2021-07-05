@@ -87,6 +87,10 @@ button:not(:disabled):hover {
   transform: scale(1.1);
 }
 
+.safe-btn {
+  color: #80FF72;
+  padding: 5px 15px;
+}
 
 #loading {
   position: absolute;

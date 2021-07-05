@@ -17,6 +17,12 @@ export interface ApiClass {
   module: ApiModule;
 }
 
-export interface IRouteParams {
+export interface RouteParams {
   id: string;
+}
+
+
+interface ModuleWithCount {
+  module: ApiModule,
+  classCount: number
 }

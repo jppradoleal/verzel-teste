@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { FaCode } from 'react-icons/fa';
 import { ToastContainer } from 'react-toastify';
+import Modal from 'react-modal';
 import './App.css';
 import GuardedRoute, { IGuardedRouteProps } from './components/GuardedRoute';
 import Header from './components/Header';
@@ -14,6 +15,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoadingContext from './contexts/LoadingContext';
 import ListarAulas from './pages/ListarAulas';
 import ListarModulosAulas from './pages/ListarModulosAulas';
+
+Modal.setAppElement("#root");
 
 function App() {
   const [isDarkMode, setDarkMode] = useState(true);

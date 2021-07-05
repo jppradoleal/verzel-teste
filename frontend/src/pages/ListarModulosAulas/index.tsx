@@ -1,21 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ApiModule } from "../../@types/Api";
+import { ModuleWithCount } from "../../@types/Api";
 import Card from '../../components/Card';
+import ConfirmDeleteModal from '../../components/ConfirmDeleteModal';
 import UserContext from "../../contexts/UserContext";
 import api from "../../services/ApiService";
 import './listar-modulos-aulas.css';
 
-interface IModuleWithCount {
-  module: ApiModule,
-  classCount: number
-}
-
 const ListarModulosAulas = () => {
   const { token } = useContext(UserContext);
 
-  const [modules, setModules] = useState<IModuleWithCount[]>();
+  const [modules, setModules] = useState<ModuleWithCount[]>();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRegistry, setSelectedRegistry] = useState('');
 
   const history = useHistory();
 
@@ -39,7 +37,8 @@ const ListarModulosAulas = () => {
   useEffect(() => {
     api.get("/modules")
       .then(response => response.data)
-      .then((data: IModuleWithCount[]) => {
+      .then((data: ModuleWithCount[]) => {
+        console.log(data);
         setModules(data);
       })
       .catch(err => toast.error(err.response.data.error));
@@ -47,6 +46,7 @@ const ListarModulosAulas = () => {
 
   return (
     <div id="listar-modulos-aulas-page">
+      <ConfirmDeleteModal isOpen={modalOpen} closeModal={() => setModalOpen(false)} onAccept={() => handleDelete(selectedRegistry)}/>
       <div className="card-group">
         {modules && modules.length > 0 ? modules.map(v => {
           return (
@@ -57,7 +57,10 @@ const ListarModulosAulas = () => {
               headerBadge={v.classCount}
               authenticated={!!token}
               handleEdit={() => handleEdit(v.module.id)}
-              handleDelete={() => handleDelete(v.module.id)}
+              handleDelete={() => {
+                setModalOpen(state => !state);
+                setSelectedRegistry(v.module.id);
+              }}
               actionUrl={`/${v.module.id}/listar_aulas`}
               key={v.module.id}
             />

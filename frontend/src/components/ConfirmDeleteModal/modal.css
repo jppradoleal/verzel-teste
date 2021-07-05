@@ -1,0 +1,16 @@
+#modal button {
+    color: black;
+    padding: 5px 25px;
+}
+
+#modal .btn-group {
+    display: flex;
+}
+
+#modal .accept {
+    background: tomato;
+}
+
+#modal .reject {
+    background: #80FF72;
+}

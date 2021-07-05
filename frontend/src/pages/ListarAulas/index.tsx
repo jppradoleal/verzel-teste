@@ -3,14 +3,14 @@ import dayjs from 'dayjs';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ApiClass, ApiModule, IRouteParams } from '../../@types/Api';
+import { ApiClass, ApiModule, RouteParams } from '../../@types/Api';
 import Card from '../../components/Card';
 import UserContext from '../../contexts/UserContext';
 import api from '../../services/ApiService';
 import './listar_aulas.css';
 
 const ListarAulas = () => {
-  const {id} = useParams<IRouteParams>();
+  const {id} = useParams<RouteParams>();
 
   const [modules, setModules] = useState<ApiModule[]>();
   const [classes, setClasses] = useState<ApiClass[]>();

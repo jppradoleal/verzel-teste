@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ApiModule, IRouteParams } from '../../@types/Api';
+import { ApiModule, RouteParams } from '../../@types/Api';
 import Button from '../../components/Button';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import UserContext from '../../contexts/UserContext';
@@ -10,7 +10,7 @@ import api from '../../services/ApiService';
 import './cadastrar_modulo.css';
 
 const FormularioModulo = () => {
-  const { id } = useParams<IRouteParams>();
+  const { id } = useParams<RouteParams>();
 
   const { isDarkMode } = useContext(DarkModeContext);
   const { token } = useContext(UserContext);

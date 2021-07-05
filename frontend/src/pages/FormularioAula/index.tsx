@@ -8,7 +8,7 @@ import api from '../../services/ApiService';
 import UserContext from '../../contexts/UserContext';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-import { ApiClass, ApiModule, IRouteParams } from '../../@types/Api';
+import { ApiClass, ApiModule, RouteParams } from '../../@types/Api';
 
 interface IClassWithFile extends Omit<ApiClass, 'module'> {
   thumbnail: FileList,
@@ -16,7 +16,7 @@ interface IClassWithFile extends Omit<ApiClass, 'module'> {
 }
 
 const FormularioAula = () => {
-  const {id} = useParams<IRouteParams>();
+  const {id} = useParams<RouteParams>();
 
   const {token} = useContext(UserContext);
   const { isDarkMode } = useContext(DarkModeContext);
