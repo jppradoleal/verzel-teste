@@ -5,7 +5,7 @@ import {v4 as uuid} from "uuid";
 @Entity({name: "users"})
 class User {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()

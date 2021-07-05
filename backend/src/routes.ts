@@ -14,7 +14,7 @@ const classController = new ClassController();
 
 // #region Users related 
 router.get("/users", userController.list);
-router.post("/users/create", isAuthenticated, ensureAdmin, userController.create);
+router.post("/users/create", userController.create);
 
 router.post("/login", userController.authenticate);
 // #endregion

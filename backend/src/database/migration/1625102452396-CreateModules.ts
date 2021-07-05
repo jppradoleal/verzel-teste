@@ -8,7 +8,7 @@ export class CreateModules1625102452396 implements MigrationInterface {
             columns: [
                 {
                     name: "id",
-                    type: "varchar",
+                    type: "uuid",
                     isPrimary: true,
                 },
                 {

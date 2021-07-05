@@ -28,8 +28,6 @@ class UserService {
 
     const userAlreadyExists = await userRepository.findOne({email});
 
-    console.log(userAlreadyExists);
-
     if(userAlreadyExists) {
       throw new InvalidRequestException("User already exists");
     }

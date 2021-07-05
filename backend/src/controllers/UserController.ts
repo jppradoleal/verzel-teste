@@ -4,14 +4,14 @@ import { UserService } from "../services/UserService";
 
 class UserController {
   async create(request: Request, response: Response) {
-    const {email, name, admin, password} = request.body;
+    const {email, name, password} = request.body;
 
     const userService = new UserService();
 
     const user = await userService.create({
       email,
       name,
-      isAdmin: admin,
+      isAdmin: false,
       password
     });
 
