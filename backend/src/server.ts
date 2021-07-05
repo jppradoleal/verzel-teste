@@ -7,6 +7,7 @@ import "./database";
 
 import { router } from "./routes";
 import { HttpException } from "./exceptions/HttpException";
+import { QueryFailedError } from "typeorm";
 
 config();
 
@@ -24,6 +25,10 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     return response.status(err.statusCode).json({
       error: err.message
     })
+  }
+
+  if(err instanceof QueryFailedError) {
+    return response.status(400).json({error: "This registries contains childs."});
   }
 
   if(err instanceof Error) {

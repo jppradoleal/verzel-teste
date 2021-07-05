@@ -12,7 +12,6 @@
    "author": "JPPradoLeal",
    "license": "ISC",
    "dependencies": {
-      "@types/multer": "^1.4.6",
       "bcryptjs": "^2.4.3",
       "class-transformer": "^0.4.0",
       "cors": "^2.8.5",
@@ -33,7 +32,8 @@
       "@types/cors": "^2.8.10",
       "@types/express": "^4.17.12",
       "@types/jsonwebtoken": "^8.5.2",
-      "@types/node": "^8.0.29",
+      "@types/multer": "^1.4.6",
+      "@types/node": "^8.10.66",
       "@types/uuid": "^8.3.0",
       "ts-node": "^3.3.0",
       "ts-node-dev": "^1.1.7",

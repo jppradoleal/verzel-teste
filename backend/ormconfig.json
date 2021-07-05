@@ -1,7 +1,6 @@
 {
    "type": "sqlite",
    "database": "src/database/verzel.sqlite",
-   "logging": true,
    "entities": [
       "src/entity/**/*.ts"
    ],
