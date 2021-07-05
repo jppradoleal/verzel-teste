@@ -33,7 +33,7 @@ class ModuleController {
 
   async update(request: Request, response: Response) {
     const {id} = request.params;
-    const {name} = request.body;
+    const {name, description} = request.body;
     
     if(!id) {
       throw new InvalidRequestException("Id invalid");
@@ -41,7 +41,7 @@ class ModuleController {
 
     const moduleService = new ModuleService();
 
-    const module = await moduleService.update(id, name);
+    const module = await moduleService.update(id, name, description);
 
     response.status(202).json(module);
   }

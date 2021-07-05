@@ -8,7 +8,11 @@ class ClassController {
 
     console.log(request.file);
 
-    const thumbnail = request?.file.path;
+    let thumbnail;
+
+    if(request.file) {
+      thumbnail = request.file.path;
+    }
 
     const formattedDate = dayjs(start_date).toDate();
 

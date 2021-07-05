@@ -15,7 +15,7 @@ class Class {
   @ManyToOne(() => Module, module => module.id)
   module: Module;
 
-  @Transform(value => `${process.env.URL}/${value.value}`)
+  @Transform(value => `${process.env.URL || "http://localhost:8080"}/${value.value}`)
   @Column({name: "thumbnail_url"})
   imageUrl: string;
 

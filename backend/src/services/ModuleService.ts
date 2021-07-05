@@ -48,7 +48,7 @@ class ModuleService {
     return classToPlain(module);
   }
 
-  async update(id: string, name: string) {
+  async update(id: string, name: string, description: string) {
     const moduleRepository = getCustomRepository(ModuleRepository);
 
     let module = await moduleRepository.findOne({id});
@@ -58,6 +58,7 @@ class ModuleService {
     }
 
     module.name = name;
+    module.description = description;
 
     module = moduleRepository.merge(module);
 
